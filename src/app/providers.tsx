@@ -2,6 +2,11 @@
 
 import { NextUIProvider } from "@nextui-org/react";
 
-export function Providers({ children }: { children: React.ReactNode }) {
-  return <NextUIProvider>{children}</NextUIProvider>;
+interface UiProviderProps {
+  children: React.ReactNode;
+  className?: string;
+}
+
+export function Providers({ children, className }: UiProviderProps) {
+  return <NextUIProvider className={className}>{children}</NextUIProvider>;
 }
