@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Providers } from "./providers";
 import "./globals.css";
-import PassiveModal from "@/components/PassiveModal";
-import { Button } from "@nextui-org/react";
+import TopNavBar from "./TopNavBar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,11 +17,13 @@ interface LayoutProps {
 }
 
 export default function RootLayout({ children, modal }: LayoutProps) {
+  const NAV_BAR_ClASS = `h-[40px]`;
   return (
-    <html lang="en" className="dark text-foreground bg-background">
-      <body>
-        <Providers>
-          <main id="appRoot">
+    <html lang="en" className="dark text-foreground bg-background ">
+      <body className="w-screen h-[100dvh]">
+        <Providers className="w-full flex flex-col items-center">
+          <TopNavBar className={NAV_BAR_ClASS} />
+          <main className="w-full flex flex-col items-center h-[calc(100dvh-40px)] lg:w-2/3 xl:w-1/2 px-2">
             {children}
             {modal}
           </main>
