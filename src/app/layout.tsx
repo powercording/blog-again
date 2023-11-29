@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Providers } from "./providers";
 import "./globals.css";
-import TopNavBar from "./TopNavBar";
+import TopNavBar from "../components/TopNavBar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,6 +20,20 @@ export default function RootLayout({ children, modal }: LayoutProps) {
   const NAV_BAR_ClASS = `h-[40px]`;
   return (
     <html lang="en" className="dark text-foreground bg-background ">
+      <head>
+        <link
+          rel="icon"
+          href="/icon?<generated>"
+          type="image/<generated>"
+          sizes="<generated>"
+        />
+        <link
+          rel="apple-touch-icon"
+          href="/apple-icon?<generated>"
+          type="image/<generated>"
+          sizes="<generated>"
+        />
+      </head>
       <body className="w-screen h-[100dvh]">
         <Providers className="w-full flex flex-col items-center">
           <TopNavBar className={NAV_BAR_ClASS} />
