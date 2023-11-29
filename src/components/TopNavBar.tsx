@@ -22,10 +22,11 @@ import {
   NavbarMenuToggle,
   NavbarMenu,
 } from "@nextui-org/react";
+
 import { useState } from "react";
-interface NavBarProps {
+type NavBarProps = {
   className: string;
-}
+};
 
 export default function TopNavBar({ className }: NavBarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -44,7 +45,7 @@ export default function TopNavBar({ className }: NavBarProps) {
         />
         <NavbarBrand>* add icon and brand name later.</NavbarBrand>
       </NavbarContent>
-
+      {/* TODO: 각 드롭다운의 링크 작성하기 */}
       <NavbarContent className="hidden sm:flex gap-4">
         {/* 코드 카테고리 */}
         <Dropdown>
@@ -55,7 +56,7 @@ export default function TopNavBar({ className }: NavBarProps) {
                 className="p-0 bg-transparent data-[hover=true]:bg-transparent text-md"
                 radius="sm"
                 variant="light"
-                startContent={<FaReact />}
+                startContent={<FaReact className="text-primary-400" />}
               >
                 Development
               </Button>
@@ -65,7 +66,7 @@ export default function TopNavBar({ className }: NavBarProps) {
             <DropdownItem
               key="code"
               description="Javascript | Typescript | React | Next.js | TailwindCSS | NextUI | Vercel"
-              startContent={<FaCode />}
+              startContent={<FaCode className="text-primary-600" />}
               className="text-lg"
             >
               Code
@@ -73,7 +74,7 @@ export default function TopNavBar({ className }: NavBarProps) {
             <DropdownItem
               key="Thinking of code"
               description="What I thought when I was coding."
-              startContent={<FaRegLightbulb />}
+              startContent={<FaRegLightbulb className="text-warning-700" />}
               className="text-lg"
             >
               thinking of code
@@ -89,7 +90,7 @@ export default function TopNavBar({ className }: NavBarProps) {
                 className="p-0 bg-transparent data-[hover=true]:bg-transparent text-md"
                 radius="sm"
                 variant="light"
-                startContent={<BiDrink />}
+                startContent={<BiDrink className="text-pink-400" />}
               >
                 Drinks & Food
               </Button>
@@ -125,7 +126,7 @@ export default function TopNavBar({ className }: NavBarProps) {
         {/* Login or Logout */}
         <NavbarItem className="ml-auto">
           {/* TODO: 로그인 여부 확인하여 로그인 아웃 변경 및 마이페이지 버튼 */}
-          <Link href="/login">Login</Link>
+          <Link href="/auth/signin">Sign-in</Link>
         </NavbarItem>
       </NavbarContent>
       <NavbarMenu>
