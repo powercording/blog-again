@@ -17,7 +17,6 @@ interface LayoutProps {
 }
 
 export default function RootLayout({ children, modal }: LayoutProps) {
-  const NAV_BAR_ClASS = `h-[40px]`;
   return (
     <html lang="en" className="dark text-foreground bg-background ">
       <head>
@@ -36,8 +35,8 @@ export default function RootLayout({ children, modal }: LayoutProps) {
       </head>
       <body className="w-screen h-[100dvh]">
         <Providers className="w-full flex flex-col items-center">
-          <TopNavBar className={NAV_BAR_ClASS} />
-          <main className="w-full flex flex-col items-center h-[calc(100dvh-40px)] lg:w-2/3 xl:w-1/2 px-2">
+          <TopNavBar className={""} />
+          <main className="w-full flex flex-col items-center h-full lg:w-2/3 xl:w-1/2 px-2">
             {children}
             {modal}
           </main>
