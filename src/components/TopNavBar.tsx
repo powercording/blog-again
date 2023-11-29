@@ -20,6 +20,7 @@ import {
   Dropdown,
   DropdownMenu,
   NavbarMenuToggle,
+  NavbarMenu,
 } from "@nextui-org/react";
 import { useState } from "react";
 interface NavBarProps {
@@ -33,14 +34,15 @@ export default function TopNavBar({ className }: NavBarProps) {
     <Navbar
       maxWidth="full"
       onMenuOpenChange={setIsMenuOpen}
-      // className={twMerge("border w-full px-3 flex items-center", className)}
+      isBordered
+      className={twMerge("w-full px-3 flex items-center")}
     >
       <NavbarContent className="shrink-1">
         <NavbarMenuToggle
           className="sm:hidden"
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
         />
-        {/* <NavbarBrand>* add icon and brand name later.</NavbarBrand> */}
+        <NavbarBrand>* add icon and brand name later.</NavbarBrand>
       </NavbarContent>
 
       <NavbarContent className="hidden sm:flex gap-4">
@@ -97,7 +99,7 @@ export default function TopNavBar({ className }: NavBarProps) {
             <DropdownItem
               key="Alcohol"
               description="My favorite alcohol."
-              startContent={<PiWineDuotone />}
+              startContent={<PiWineDuotone className="text-secondary-700" />}
               className="text-lg"
             >
               Wine
@@ -105,7 +107,7 @@ export default function TopNavBar({ className }: NavBarProps) {
             <DropdownItem
               key="Other"
               description="Whiskey beer ..."
-              startContent={<PiBeerBottle />}
+              startContent={<PiBeerBottle className="text-success-700" />}
               className="text-lg"
             >
               Other
@@ -120,7 +122,24 @@ export default function TopNavBar({ className }: NavBarProps) {
             </DropdownItem>
           </DropdownMenu>
         </Dropdown>
+        {/* Login or Logout */}
+        <NavbarItem className="ml-auto">
+          {/* TODO: 로그인 여부 확인하여 로그인 아웃 변경 및 마이페이지 버튼 */}
+          <Link href="/login">Login</Link>
+        </NavbarItem>
       </NavbarContent>
+      <NavbarMenu>
+        {/* TODO: 모바일 환경에서 메뉴 아이템 노출하기 for temporary*/}
+        <NavbarItem>
+          <Link href="/about">About</Link>
+        </NavbarItem>
+        <NavbarItem>
+          <Link href="/blog">Blog</Link>
+        </NavbarItem>
+        <NavbarItem>
+          <Link href="/contact">Contact</Link>
+        </NavbarItem>
+      </NavbarMenu>
     </Navbar>
   );
 }
