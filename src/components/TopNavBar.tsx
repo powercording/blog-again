@@ -8,6 +8,7 @@ import { BiDrink } from "react-icons/bi";
 import { PiWineDuotone } from "react-icons/pi";
 import { PiBeerBottle } from "react-icons/pi";
 import { GiForkKnifeSpoon } from "react-icons/gi";
+import { SlPuzzle } from "react-icons/sl";
 import {
   Navbar,
   NavbarBrand,
@@ -65,6 +66,7 @@ export default function TopNavBar({ className }: NavBarProps) {
           <DropdownMenu>
             <DropdownItem
               key="code"
+              href="/blog/development/code"
               description="Javascript | Typescript | React | Next.js | TailwindCSS | NextUI | Vercel"
               startContent={<FaCode className="text-primary-600" />}
               className="text-lg"
@@ -73,11 +75,21 @@ export default function TopNavBar({ className }: NavBarProps) {
             </DropdownItem>
             <DropdownItem
               key="Thinking of code"
+              href="/blog/development/thinking-of-code"
               description="What I thought when I was coding."
               startContent={<FaRegLightbulb className="text-warning-700" />}
               className="text-lg"
             >
               thinking of code
+            </DropdownItem>
+            <DropdownItem
+              key="algorithm"
+              href="/blog/development/algorithm"
+              description="Puzzle."
+              startContent={<SlPuzzle className="text-success-700" />}
+              className="text-lg"
+            >
+              Algorithm
             </DropdownItem>
           </DropdownMenu>
         </Dropdown>
@@ -99,6 +111,7 @@ export default function TopNavBar({ className }: NavBarProps) {
           <DropdownMenu>
             <DropdownItem
               key="Alcohol"
+              href="/blog/drinks-and-food/wine"
               description="My favorite alcohol."
               startContent={<PiWineDuotone className="text-secondary-700" />}
               className="text-lg"
@@ -107,6 +120,7 @@ export default function TopNavBar({ className }: NavBarProps) {
             </DropdownItem>
             <DropdownItem
               key="Other"
+              href="/blog/drinks-and-food/other"
               description="Whiskey beer ..."
               startContent={<PiBeerBottle className="text-success-700" />}
               className="text-lg"
@@ -115,6 +129,7 @@ export default function TopNavBar({ className }: NavBarProps) {
             </DropdownItem>
             <DropdownItem
               key="Food"
+              href="/blog/drinks-and-food/food"
               description="Yummy!"
               startContent={<GiForkKnifeSpoon />}
               className="text-lg"
