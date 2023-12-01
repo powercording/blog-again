@@ -13,11 +13,11 @@ describe("Home('/') Component Test", () => {
 });
 
 describe("Navbar Component  Test", () => {
-  it("Text 'add' should be in the page", () => {
+  it("Text 'development' should be in the page", () => {
     render(<Nav className="" />); // ARRANGE
 
-    const myElement = screen.getByText(/development/i); // ACT
+    const myElement = screen.getByText(/development/i);
 
-    expect(myElement).toBeInTheDocument(); // ASSERT
+    expect(myElement).toBeInTheDocument();
   });
 });
