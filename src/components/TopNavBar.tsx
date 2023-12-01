@@ -45,6 +45,11 @@ export default function TopNavBar({ className }: NavBarProps) {
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
         />
         <NavbarBrand>* add icon and brand name later.</NavbarBrand>
+        <NavbarItem>
+          <Link href="/" className="text-default-foreground">
+            Home
+          </Link>
+        </NavbarItem>
       </NavbarContent>
       {/* TODO: 각 드롭다운의 링크 작성하기 */}
       <NavbarContent className="hidden sm:flex gap-4">
