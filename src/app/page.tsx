@@ -10,6 +10,7 @@ import {
 export default function Home() {
   return (
     <div className="pt-10">
+      {/*TODO: 아바타 컴포넌트화 시켜서 사용자 정보 동적으로 받아오게 하면 좋을것같음. */}
       <Card shadow="none" className="max-w-[300px] border-none bg-background">
         <CardHeader className="justify-between">
           <div className="flex gap-3">
