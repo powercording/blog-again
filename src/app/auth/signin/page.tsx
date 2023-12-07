@@ -1,9 +1,16 @@
 import { Input } from "@nextui-org/input";
 import { Button } from "@nextui-org/button";
+import { findOneUser, signupUser } from "@/service/user";
 
 export default function SigninPage() {
+  const handleAction = async (form: FormData) => {
+    "use server";
+    const user = await signupUser("hateyou@kakao.com");
+    console.log(user);
+  };
+
   return (
-    <form className="flex flex-col gap-3 w-96 py-10">
+    <form className="flex flex-col gap-3 w-96 py-10" action={handleAction}>
       <Input
         isRequired
         isClearable
@@ -13,6 +20,7 @@ export default function SigninPage() {
         label="Email"
         placeholder="이메일을 입력해주세요"
         radius="sm"
+        name="test"
       />
       <Input
         isRequired
@@ -25,7 +33,13 @@ export default function SigninPage() {
         radius="sm"
       />
       <br />
-      <Button radius="sm" size="md" variant="faded" color="primary">
+      <Button
+        radius="sm"
+        size="md"
+        variant="faded"
+        color="primary"
+        type="submit"
+      >
         로그인
       </Button>
       <Button radius="sm" size="md" variant="faded" color="primary">
