@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import { Providers } from "./providers";
 import "./globals.css";
 import TopNavBar from "@/components/TopNavBar";
+import { getSession } from "@/service/user";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +17,9 @@ type LayoutProps = {
   modal: React.ReactNode;
 };
 
-export default function RootLayout({ children, modal }: LayoutProps) {
+export default async function RootLayout({ children, modal }: LayoutProps) {
+  const session = await getSession();
+
   return (
     <html lang="en" className="dark text-foreground bg-background ">
       <head>
@@ -35,7 +38,7 @@ export default function RootLayout({ children, modal }: LayoutProps) {
       </head>
       <body className="w-screen h-[100dvh]">
         <Providers className="w-full flex flex-col items-center">
-          <TopNavBar className={""} />
+          <TopNavBar className={""} isLoggedin={session.isLoggedIn} />
           <main className="w-full flex flex-col items-center h-full lg:w-2/3 xl:w-1/2 px-2">
             {children}
             {modal}

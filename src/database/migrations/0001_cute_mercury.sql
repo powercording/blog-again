@@ -1,0 +1,1 @@
+ALTER TABLE `BlogUser` MODIFY COLUMN `password` varchar(60) NOT NULL;
