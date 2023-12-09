@@ -1,12 +1,24 @@
 import { Input } from "@nextui-org/input";
 import { Button } from "@nextui-org/button";
-import { findOneUser, signupUser } from "@/service/user";
+import { signupUser } from "@/service/user";
+import { AUTH } from "@/constants/auth";
 
-export default function SigninPage() {
+type SigninPageProps = {
+  searchParams: { [key: string]: string | undefined };
+};
+
+export default function SigninPage({ searchParams }: SigninPageProps) {
   const handleAction = async (form: FormData) => {
     "use server";
-    const user = await signupUser("hateyou@kakao.com");
-    console.log(user);
+
+    const email = form.get("email") as string;
+    const password = form.get("password") as string;
+
+    if (!email || !password || !email.trim() || !password.trim()) {
+      return;
+    }
+
+    await signupUser(email, password);
   };
 
   return (
@@ -20,7 +32,7 @@ export default function SigninPage() {
         label="Email"
         placeholder="이메일을 입력해주세요"
         radius="sm"
-        name="test"
+        name="email"
       />
       <Input
         isRequired
@@ -31,6 +43,11 @@ export default function SigninPage() {
         label="Password"
         placeholder="비밀번호를 입력해주세요"
         radius="sm"
+        name="password"
+        errorMessage={
+          searchParams.result === "failed" && // "<string>failed from searchParams"
+          AUTH[searchParams.message as keyof typeof AUTH]
+        }
       />
       <br />
       <Button
@@ -40,9 +57,6 @@ export default function SigninPage() {
         color="primary"
         type="submit"
       >
-        로그인
-      </Button>
-      <Button radius="sm" size="md" variant="faded" color="primary">
         회원 가입
       </Button>
     </form>

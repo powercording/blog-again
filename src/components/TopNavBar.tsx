@@ -25,11 +25,13 @@ import {
 } from "@nextui-org/react";
 
 import { useState } from "react";
+import { signout } from "@/service/user";
 type NavBarProps = {
   className: string;
+  isLoggedin: boolean;
 };
 
-export default function TopNavBar({ className }: NavBarProps) {
+export default function TopNavBar({ className, isLoggedin }: NavBarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
@@ -52,13 +54,12 @@ export default function TopNavBar({ className }: NavBarProps) {
         </NavbarItem>
       </NavbarContent>
       {/* TODO: 각 드롭다운의 링크 작성하기 */}
-      <NavbarContent className="hidden sm:flex gap-4">
+      <NavbarContent className="hidden sm:flex gap-4" justify="center">
         {/* 코드 카테고리 */}
         <Dropdown>
           <NavbarItem>
             <DropdownTrigger>
               <Button
-                disableRipple
                 className="p-0 bg-transparent data-[hover=true]:bg-transparent text-md"
                 radius="sm"
                 variant="light"
@@ -144,10 +145,35 @@ export default function TopNavBar({ className }: NavBarProps) {
           </DropdownMenu>
         </Dropdown>
         {/* Login or Logout */}
-        <NavbarItem className="ml-auto">
-          {/* TODO: 로그인 여부 확인하여 로그인 아웃 변경 및 마이페이지 버튼 */}
-          <Link href="/auth/signin">Sign-in</Link>
-        </NavbarItem>
+      </NavbarContent>
+      <NavbarContent>
+        {isLoggedin ? (
+          <NavbarItem className="ml-auto">
+            {/* TODO: 로그인 여부 확인하여 로그인 아웃 변경 및 마이페이지 버튼 */}
+            <Button
+              variant="light"
+              className="text-md"
+              onPress={() => signout()}
+            >
+              Logout
+            </Button>
+          </NavbarItem>
+        ) : (
+          <>
+            <NavbarItem className="ml-auto">
+              {/* TODO: 로그인 여부 확인하여 로그인 아웃 변경 및 마이페이지 버튼 */}
+              <Link href="/auth/signin" color="foreground">
+                Sign-in
+              </Link>
+            </NavbarItem>
+            <NavbarItem className="">
+              {/* TODO: 로그인 여부 확인하여 로그인 아웃 변경 및 마이페이지 버튼 */}
+              <Link href="/auth/signup" color="foreground">
+                Sign-up
+              </Link>
+            </NavbarItem>
+          </>
+        )}
       </NavbarContent>
       <NavbarMenu>
         {/* TODO: 모바일 환경에서 메뉴 아이템 노출하기 for temporary*/}

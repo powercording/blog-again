@@ -20,7 +20,6 @@ export default function SigninPage({ searchParams }: SigninPageProps) {
 
     await signinUser(email, password);
   };
-  console.log(3123);
 
   return (
     <form className="flex flex-col gap-3 w-96 py-10" action={handleAction}>
@@ -58,7 +57,7 @@ export default function SigninPage({ searchParams }: SigninPageProps) {
         color="primary"
         type="submit"
       >
-        로그인dds
+        로그인
       </Button>
     </form>
   );
