@@ -28,10 +28,10 @@ import { useState } from "react";
 import { signout } from "@/service/user";
 type NavBarProps = {
   className: string;
-  isLoggedin: boolean;
+  isLoggedIn: boolean;
 };
 
-export default function TopNavBar({ className, isLoggedin }: NavBarProps) {
+export default function TopNavBar({ className, isLoggedIn }: NavBarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
@@ -147,7 +147,7 @@ export default function TopNavBar({ className, isLoggedin }: NavBarProps) {
         {/* Login or Logout */}
       </NavbarContent>
       <NavbarContent>
-        {isLoggedin ? (
+        {isLoggedIn ? (
           <NavbarItem className="ml-auto">
             {/* TODO: 로그인 여부 확인하여 로그인 아웃 변경 및 마이페이지 버튼 */}
             <Button
