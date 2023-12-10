@@ -4,6 +4,7 @@ import { Providers } from "./providers";
 import "./globals.css";
 import TopNavBar from "@/components/TopNavBar";
 import { getSession } from "@/service/user";
+import FloatingButton from "@/components/FloatingButton";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -38,11 +39,12 @@ export default async function RootLayout({ children, modal }: LayoutProps) {
       </head>
       <body className="w-screen h-[100dvh]">
         <Providers className="w-full flex flex-col items-center">
-          <TopNavBar className={""} isLoggedin={session.isLoggedIn} />
+          <TopNavBar className={""} isLoggedIn={session.isLoggedIn} />
           <main className="w-full flex flex-col items-center h-full lg:w-2/3 xl:w-1/2 px-2">
             {children}
             {modal}
           </main>
+          <FloatingButton />
         </Providers>
       </body>
     </html>
