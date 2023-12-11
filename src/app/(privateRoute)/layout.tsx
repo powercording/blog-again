@@ -1,6 +1,5 @@
 import { getSession } from "@/service/user";
 import { redirect } from "next/navigation";
-import React from "react";
 
 type PublicLayoutProps = {
   children: React.ReactElement;
@@ -9,8 +8,8 @@ type PublicLayoutProps = {
 export default async function PublicLayout({ children }: PublicLayoutProps) {
   const session = await getSession();
 
-  // if user is logged in, redirect to home page ( no need to navigate to login page )
-  if (session.isLoggedIn) {
+  // if user is not logged in, redirect to home page ( not allowed to navigate to private pages)
+  if (!session.isLoggedIn) {
     redirect("/");
   }
 

@@ -38,13 +38,13 @@ export default async function RootLayout({ children, modal }: LayoutProps) {
         />
       </head>
       <body className="w-screen h-[100dvh]">
-        <Providers className="w-full flex flex-col items-center">
+        <Providers className="w-full flex flex-col items-center max-h-full h-full">
           <TopNavBar className={""} isLoggedIn={session.isLoggedIn} />
           <main className="w-full flex flex-col items-center h-full lg:w-2/3 xl:w-1/2 px-2">
             {children}
             {modal}
           </main>
-          <FloatingButton />
+          {session.isLoggedIn && <FloatingButton />}
         </Providers>
       </body>
     </html>
