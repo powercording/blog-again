@@ -1,32 +1,35 @@
-import React from "react";
+import Editor from '@/components/markdown/Editor';
+import Markdown from '@/components/markdown/Markdown';
+import React from 'react';
 
 export default function page() {
   return (
     <>
-      <section className="w-full max-w-[700px] h-fit p-3 pb-8 border-b-[0.5px] border-gray-400">
-        <div className="h-28 flex items-end relative overflow-hidden">
+      {/* <section className="h-fit w-full max-w-[700px] border-b-[0.5px] border-gray-400 p-3 pb-8">
+        <div className="relative flex h-28 items-end overflow-hidden">
           <h1
             autoFocus
             contentEditable
-            placeholder="제목을 입력하세요"
-            className="before:empty:content-[attr(placeholder)] before:empty:text-gray-500 before:empty:text-3xl text-3xl focus:outline-none absolute max-w-full bottom-0 h-auto cursor-text"
+            data-placeholder="제목을 입력하세요"
+            className="absolute bottom-0 h-auto max-w-full cursor-text text-3xl before:empty:text-3xl before:empty:text-gray-500 before:empty:content-[attr(data-placeholder)] focus:outline-none"
           />
         </div>
-        <div className="overflow-ellipsis relative w-full">
+        <div className="relative w-full overflow-ellipsis">
           <p
             contentEditable
-            placeholder="부제목을 입력하세요"
-            className="before:empty:content-[attr(placeholder)] before:empty:text-gray-500 before:empty:text-base h-8 py-2 text-base focus:outline-none text-gray-400 w-full cursor-text"
+            data-placeholder="부제목을 입력하세요"
+            className="h-8 w-full cursor-text py-2 text-base text-gray-400 before:empty:text-base before:empty:text-gray-500 before:empty:content-[attr(data-placeholder)] focus:outline-none"
           />
         </div>
       </section>
-      <section className="h-fit min-h-full border max-w-[700px] w-full mt-8 relative">
+      <section className="relative mt-8 h-fit min-h-full w-full max-w-[700px] border">
         <div
           contentEditable
-          placeholder="여기에 글을 입력하세요"
-          className="focus:outline-none before:empty:content-[attr(placeholder)] before:empty:text-gray-500 before:empty:text-base cursor-text h-full"
+          data-placeholder="여기에 글을 입력하세요"
+          className="h-full cursor-text before:empty:text-base before:empty:text-gray-500 before:empty:content-[attr(data-placeholder)] focus:outline-none"
         />
-      </section>
+      </section> */}
+      <Markdown />
     </>
   );
 }
