@@ -1,3 +1,10 @@
-export default function CodePage() {
-  return <h1>코드페이지</h1>;
+import { getSession } from '@/service/user';
+
+export default async function CodePage() {
+  const session = await getSession();
+  return (
+    <>
+      <h1>코드페이지</h1>
+    </>
+  );
 }

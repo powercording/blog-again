@@ -1,15 +1,15 @@
-"use server";
+'use server';
 
-import { db } from "@/database/client";
-import { blogUser } from "@/database/schema/userSchema";
-import { eq } from "drizzle-orm";
-import { redirect } from "next/navigation";
-import bcrypt from "bcrypt";
-import handler from "./handler";
-import { cookies } from "next/headers";
-import { getIronSession } from "iron-session";
-import { SessionData, defaultSession, sessionOptions } from "./session-lib";
-import { revalidatePath } from "next/cache";
+import { db } from '@/database/client';
+import { blogUser } from '@/database/schema/userSchema';
+import { eq } from 'drizzle-orm';
+import { redirect } from 'next/navigation';
+import bcrypt from 'bcrypt';
+import handler from './handler';
+import { cookies } from 'next/headers';
+import { getIronSession } from 'iron-session';
+import { SessionData, defaultSession, sessionOptions } from './session-lib';
+import { revalidatePath } from 'next/cache';
 
 export const getSession = async () => {
   const session = await getIronSession<SessionData>(cookies(), sessionOptions);
@@ -26,10 +26,7 @@ export const getSession = async () => {
 
 // basic find user done.
 export const findOneUser = async (email: string) => {
-  const select = await db
-    .select()
-    .from(blogUser)
-    .where(eq(blogUser.email, email));
+  const select = await db.select().from(blogUser).where(eq(blogUser.email, email));
 
   const user = select.length >= 1 ? select[0] : null;
   return user;
@@ -39,15 +36,11 @@ export const findOneUser = async (email: string) => {
 export const signinUser = handler(async (email: string, password: string) => {
   const user = await findOneUser(email);
 
-  if (!user) redirect("/auth/signin?result=failed&message=login_failed");
+  if (!user) redirect('/auth/signin?result=failed&message=login_failed');
 
-  const comparePassword = await bcrypt.compare(
-    password,
-    user?.password as string
-  );
+  const comparePassword = await bcrypt.compare(password, user?.password as string);
 
-  if (!comparePassword)
-    return redirect("/auth/signin?result=failed&message=login_failed");
+  if (!comparePassword) return redirect('/auth/signin?result=failed&message=login_failed');
 
   const session = await getSession();
   session.isLoggedIn = true;
@@ -56,24 +49,23 @@ export const signinUser = handler(async (email: string, password: string) => {
   session.email = user?.email as string;
 
   await session.save();
-  redirect("/");
+  redirect('/');
 });
 
 // basic signup
 export const signupUser = handler(async (email: string, password: string) => {
   const user = await findOneUser(email);
 
-  if (user)
-    return redirect("/auth/signup?result=failed&message=duplicated_email");
+  if (user) return redirect('/auth/signup?result=failed&message=duplicated_email');
 
   const cryptPassword = await bcrypt.hash(password, 10);
   const newUser = await db.insert(blogUser).values({
     email,
     password: cryptPassword,
-    name: "anonymous",
+    name: 'anonymous',
   });
 
-  if (newUser.rowsAffected === 1) redirect("/auth/signin");
+  if (newUser.rowsAffected === 1) redirect('/auth/signin');
 });
 
 export const signout = async (to?: string) => {
@@ -84,5 +76,5 @@ export const signout = async (to?: string) => {
     revalidatePath(to);
   }
 
-  redirect("/");
+  redirect('/');
 };

@@ -1,4 +1,3 @@
-'use client';
 import React from 'react';
 import { unified } from 'unified';
 import remarkParse from 'remark-parse';
@@ -34,12 +33,12 @@ export default function Preview(props: Props) {
 
   return (
     <div
-      className="prose prose-h1:border-b prose-h1:text-[#abb2bf] 
-    prose-h2:border-b prose-h2:text-[#abb2bf] 
-    prose-a:text-primary
-    prose-blockquote:text-white prose-blockquote:text-center
-    prose-th:text-success-500
-    box-border h-full w-full overflow-auto bg-[#1b1f2372] bg-opacity-40 p-3 text-[#abb2bf]"
+      className="prose box-border h-full 
+    w-full min-w-full 
+    overflow-auto
+    bg-transparent
+    p-3
+    text-[#abb2bf] prose-headings:pb-4 prose-h1:border-b prose-h1:text-[#abb2bf] prose-h2:border-b prose-h2:text-[#abb2bf] prose-a:text-primary prose-blockquote:text-center prose-blockquote:text-white prose-th:text-success-500"
     >
       {md}
     </div>

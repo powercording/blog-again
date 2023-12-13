@@ -1,14 +1,14 @@
-"use client";
+'use client';
 
-import { twMerge } from "tailwind-merge";
-import { FaCode } from "react-icons/fa";
-import { FaRegLightbulb } from "react-icons/fa";
-import { FaReact } from "react-icons/fa6";
-import { BiDrink } from "react-icons/bi";
-import { PiWineDuotone } from "react-icons/pi";
-import { PiBeerBottle } from "react-icons/pi";
-import { GiForkKnifeSpoon } from "react-icons/gi";
-import { SlPuzzle } from "react-icons/sl";
+import { twMerge } from 'tailwind-merge';
+import { FaCode } from 'react-icons/fa';
+import { FaRegLightbulb } from 'react-icons/fa';
+import { FaReact } from 'react-icons/fa6';
+import { BiDrink } from 'react-icons/bi';
+import { PiWineDuotone } from 'react-icons/pi';
+import { PiBeerBottle } from 'react-icons/pi';
+import { GiForkKnifeSpoon } from 'react-icons/gi';
+import { SlPuzzle } from 'react-icons/sl';
 import {
   Navbar,
   NavbarBrand,
@@ -22,10 +22,10 @@ import {
   DropdownMenu,
   NavbarMenuToggle,
   NavbarMenu,
-} from "@nextui-org/react";
+} from '@nextui-org/react';
 
-import { useState } from "react";
-import { signout } from "@/service/user";
+import { useState } from 'react';
+import { signout } from '@/service/user';
 type NavBarProps = {
   className: string;
   isLoggedIn: boolean;
@@ -37,14 +37,15 @@ export default function TopNavBar({ className, isLoggedIn }: NavBarProps) {
   return (
     <Navbar
       maxWidth="full"
+      isBlurred={false}
       onMenuOpenChange={setIsMenuOpen}
       isBordered
-      className={twMerge("w-full px-3 flex items-center")}
+      className={twMerge('flex w-full items-center px-3')}
     >
       <NavbarContent className="shrink-1">
         <NavbarMenuToggle
           className="sm:hidden"
-          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+          aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
         />
         <NavbarBrand>* add icon and brand name later.</NavbarBrand>
         <NavbarItem>
@@ -54,13 +55,13 @@ export default function TopNavBar({ className, isLoggedIn }: NavBarProps) {
         </NavbarItem>
       </NavbarContent>
       {/* TODO: 각 드롭다운의 링크 작성하기 */}
-      <NavbarContent className="hidden sm:flex gap-4" justify="center">
+      <NavbarContent className="hidden gap-4 sm:flex" justify="center">
         {/* 코드 카테고리 */}
         <Dropdown>
           <NavbarItem>
             <DropdownTrigger>
               <Button
-                className="p-0 bg-transparent data-[hover=true]:bg-transparent text-md"
+                className="text-md bg-transparent p-0 data-[hover=true]:bg-transparent"
                 radius="sm"
                 variant="light"
                 startContent={<FaReact className="text-primary-400" />}
@@ -105,7 +106,7 @@ export default function TopNavBar({ className, isLoggedIn }: NavBarProps) {
             <DropdownTrigger>
               <Button
                 disableRipple
-                className="p-0 bg-transparent data-[hover=true]:bg-transparent text-md"
+                className="text-md bg-transparent p-0 data-[hover=true]:bg-transparent"
                 radius="sm"
                 variant="light"
                 startContent={<BiDrink className="text-pink-400" />}
@@ -150,11 +151,7 @@ export default function TopNavBar({ className, isLoggedIn }: NavBarProps) {
         {isLoggedIn ? (
           <NavbarItem className="ml-auto">
             {/* TODO: 로그인 여부 확인하여 로그인 아웃 변경 및 마이페이지 버튼 */}
-            <Button
-              variant="light"
-              className="text-md"
-              onPress={() => signout()}
-            >
+            <Button variant="light" className="text-md" onPress={() => signout()}>
               Logout
             </Button>
           </NavbarItem>

@@ -4,10 +4,15 @@ import { Providers } from './providers';
 import './globals.css';
 import TopNavBar from '@/components/TopNavBar';
 import { getSession } from '@/service/user';
-import FloatingButton from '@/components/FloatingButton';
+import localFont from 'next/font/local';
 import './shim';
 
 const inter = Inter({ subsets: ['latin'] });
+
+const font = localFont({
+  src: './SUIT-Variable.woff2',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -23,7 +28,7 @@ export default async function RootLayout({ children, modal }: LayoutProps) {
   const session = await getSession();
 
   return (
-    <html lang="en" className="bg-background text-foreground dark ">
+    <html lang="en" className={`bg-background text-foreground dark ${font.className}`}>
       <head>
         <link rel="icon" href="/icon?<generated>" type="image/<generated>" sizes="<generated>" />
         <link
@@ -40,7 +45,7 @@ export default async function RootLayout({ children, modal }: LayoutProps) {
             {children}
             {modal}
           </main>
-          {session.isLoggedIn && <FloatingButton />}
+          {/* {session.isLoggedIn && <FloatingButton key="root" />} */}
         </Providers>
       </body>
     </html>

@@ -1,3 +1,4 @@
+import type React from 'react';
 import { useState, useEffect, useRef } from 'react';
 import { EditorState } from '@codemirror/state';
 import { defaultKeymap, history, historyKeymap } from '@codemirror/commands';
@@ -5,7 +6,6 @@ import { markdown, markdownLanguage } from '@codemirror/lang-markdown';
 import { languages } from '@codemirror/language-data';
 import { oneDark } from '@codemirror/theme-one-dark';
 import { tags } from '@lezer/highlight';
-import type React from 'react';
 import {
   indentOnInput,
   bracketMatching,
@@ -80,7 +80,7 @@ const useCodeMirror = <T extends Element>(
         }),
         oneDark,
         transparentTheme,
-        // syntaxHighlighting(defaultHighlightStyle),
+        syntaxHighlighting(defaultHighlightStyle),
         syntaxHighlighting(mySyntaxHighlight),
         EditorView.lineWrapping,
         EditorView.updateListener.of(update => {
