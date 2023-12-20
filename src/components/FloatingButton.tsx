@@ -17,7 +17,6 @@ type FloatingButtonProps = {
 };
 
 export default function FloatingButton({ contents }: FloatingButtonProps) {
-  
   if (!contents) {
     console.log('contents is undefined');
   }
@@ -25,7 +24,7 @@ export default function FloatingButton({ contents }: FloatingButtonProps) {
   return (
     <Popover offset={20} radius="sm">
       <PopoverTrigger className="fixed bottom-4 right-4 z-50">
-        <Button as="text" isIconOnly radius="full" className="hover:scale-105 hover:bg-warning-300">
+        <Button isIconOnly radius="full" className="hover:scale-105 hover:bg-warning-300">
           <FaCirclePlus className="text-xl" />
         </Button>
       </PopoverTrigger>

@@ -15,8 +15,6 @@ export default function Markdown() {
     setDoc(doc);
   }, []);
 
-  console.log(doc);
-
   return (
     <>
       <div className="-top-7 flex w-full">
