@@ -41,7 +41,7 @@ export default async function RootLayout({ children, modal }: LayoutProps) {
       <body className="h-[100dvh] w-screen">
         <Providers className="flex h-full max-h-full w-full flex-col items-center">
           <TopNavBar className={''} isLoggedIn={session.isLoggedIn} />
-          <main className="flex h-full w-full flex-col items-center px-2 lg:w-2/3 xl:w-1/2">
+          <main className="flex h-full w-full flex-col">
             {children}
             {modal}
           </main>

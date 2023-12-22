@@ -3,13 +3,10 @@
 import React from 'react';
 import Editor from './Editor';
 import Preview from './Preview';
-import { LiaImageSolid } from 'react-icons/lia';
-import Temp from '../ai/Temp';
 
 export default function Markdown() {
   const [doc, setDoc] = React.useState<string>('hello world');
   const [preview, setPreview] = React.useState<boolean>(false);
-  const [isMenuOpen, setIsMenuOpen] = React.useState<boolean>(false);
 
   const handleChange = React.useCallback((doc: string) => {
     setDoc(doc);
@@ -38,19 +35,11 @@ export default function Markdown() {
         >
           미리 보기
         </button>
-        <button
-          className="ml-auto flex items-center gap-2 text-sm text-primary-500"
-          onClick={() => setIsMenuOpen(prev => !prev)}
-        >
-          <LiaImageSolid className="inline-block text-lg" />
-          <span>이미지 생성</span>
-        </button>
       </div>
       <div className="flex h-full w-full">
         {preview ? <Preview doc={doc} /> : <Editor onChange={handleChange} initialDoc={doc} />}
       </div>
       <div>게시글 작성하기</div>
-      <Temp isOpen={isMenuOpen} />
     </>
   );
 }

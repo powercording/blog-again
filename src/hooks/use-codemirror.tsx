@@ -60,7 +60,7 @@ const useCodeMirror = <T extends Element>(
   const [editorView, setEditorView] = useState<EditorView>();
   const { initialDoc, onChange } = props;
 
-  useEffect(() => { 
+  useEffect(() => {
     if (!refContainer.current) return;
 
     const startState = EditorState.create({
