@@ -1,7 +1,7 @@
-import { Input } from "@nextui-org/input";
-import { Button } from "@nextui-org/button";
-import { signinUser } from "@/service/user";
-import { AUTH } from "@/constants/auth";
+import { Input } from '@nextui-org/input';
+import { Button } from '@nextui-org/button';
+import { signinUser } from '@/service/user';
+import { AUTH } from '@/constants/auth';
 
 type SigninPageProps = {
   searchParams: { [key: string]: string | undefined };
@@ -9,10 +9,10 @@ type SigninPageProps = {
 
 export default function SigninPage({ searchParams }: SigninPageProps) {
   const handleAction = async (form: FormData) => {
-    "use server";
+    'use server';
 
-    const email = form.get("email") as string;
-    const password = form.get("password") as string;
+    const email = form.get('email') as string;
+    const password = form.get('password') as string;
 
     if (!email || !password || !email.trim() || !password.trim()) {
       return;
@@ -22,7 +22,7 @@ export default function SigninPage({ searchParams }: SigninPageProps) {
   };
 
   return (
-    <form className="flex flex-col gap-3 w-96 py-10" action={handleAction}>
+    <form className="mx-auto flex w-96 flex-col gap-3 py-10" action={handleAction}>
       <Input
         isRequired
         isClearable
@@ -45,18 +45,12 @@ export default function SigninPage({ searchParams }: SigninPageProps) {
         radius="sm"
         name="password"
         errorMessage={
-          searchParams.result === "failed" && // "failed from searchParams will be string."
+          searchParams.result === 'failed' && // "failed from searchParams will be string."
           AUTH[searchParams.message as keyof typeof AUTH]
         }
       />
       <br />
-      <Button
-        radius="sm"
-        size="md"
-        variant="faded"
-        color="primary"
-        type="submit"
-      >
+      <Button radius="sm" size="md" variant="faded" color="primary" type="submit">
         로그인
       </Button>
     </form>

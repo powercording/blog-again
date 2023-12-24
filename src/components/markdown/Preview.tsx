@@ -38,7 +38,7 @@ export default function Preview(props: Props) {
     overflow-auto
     bg-transparent
     p-3
-    text-[#abb2bf] prose-headings:pb-4 prose-h1:border-b prose-h1:text-[#abb2bf] prose-h2:border-b prose-h2:text-[#abb2bf] prose-a:text-primary prose-blockquote:text-center prose-blockquote:text-white prose-th:text-success-500"
+    text-[#abb2bf] prose-headings:pb-4 prose-h1:border-b prose-h1:text-[#abb2bf] prose-h2:border-b prose-h2:text-[#abb2bf] prose-h3:text-[#abb2bf] prose-a:text-primary prose-blockquote:text-center prose-blockquote:text-white prose-th:text-success-500"
     >
       {md}
     </div>
